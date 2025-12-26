@@ -1,0 +1,41 @@
+def product_positive(a):
+    p = 1
+    has_positive = False
+    for x in a:
+        if x > 0:
+            p *= x
+            has_positive = True
+    return p if has_positive else 0
+
+
+def sum_before_min(a):
+    min_index = a.index(min(a))
+    s = 0
+    for i in range(min_index):
+        s += a[i]
+    return s
+
+
+def sort_even_odd(a):
+    even = sorted(a[::2])
+    odd = sorted(a[1::2])
+
+    result = []
+    e = o = 0
+    for i in range(len(a)):
+        if i % 2 == 0:
+            result.append(even[e])
+            e += 1
+        else:
+            result.append(odd[o])
+            o += 1
+    return result
+
+
+n = int(input("Введіть кількість елементів: "))
+a = [float(input(f"a[{i}] = ")) for i in range(n)]
+
+print("Масив:", a)
+print("Добуток додатних елементів:", product_positive(a))
+print("Сума елементів до мінімального:", sum_before_min(a))
+print("Відсортований масив:", sort_even_odd(a))
