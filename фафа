@@ -1,37 +1,16 @@
-def product_of_positive(arr):
-    product = 1
-    found = False
-    for x in arr:
-        if x > 0:
-            product *= x
-            found = True
-    return product if found else 0
+a = [3.5, -2.1, 4, 0, 6.3, -1, 2.8, 7]
 
+p = 1
+for x in a:
+    if x > 0:
+        p *= x
 
-def sum_before_min(arr):
-    min_index = arr.index(min(arr))
-    return sum(arr[:min_index])
+s = sum(a[:a.index(min(a))])
 
+even = sorted(a[0::2])
+odd = sorted(a[1::2])
+a[0::2], a[1::2] = even, odd
 
-def sort_even_odd(arr):
-    even = sorted(arr[0::2])  
-    odd = sorted(arr[1::2])   
-
-    result = arr.copy()
-    result[0::2] = even
-    result[1::2] = odd
-    return result
-
-
-array = [3.5, -2.1, 4, 0, 6.3, -1, 2.8, 7]
-
-print("Початковий масив:", array)
-
-prod = product_of_positive(array)
-print("Добуток додатних елементів:", prod)
-
-sum_min = sum_before_min(array)
-print("Сума елементів до мінімального:", sum_min)
-
-sorted_array = sort_even_odd(array)
-print("Масив після сортування парних і непарних індексів:", sorted_array)
+print("Добуток додатніх:", p)
+print("Сума до мінімального:", s)
+print("Після сортування:", a)
